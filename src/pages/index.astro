@@ -1,8 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import { getEntry } from 'astro:content';
+
+// projects
+const kaesediebe = await getEntry('projects', 'kaesediebe');
+const ryno = await getEntry('projects', 'ryno');
 ---
 
-<Layout title='Welcome to Astro.'>
-  <main>hello world</main>
+<Layout title='Christoph Saile'>
+  <main class='px-7 py-32'>
+    <h1 class='text-4xl font-bold mb-8'>{kaesediebe.data.title}</h1>
+    <p class='text-lg'>{kaesediebe.data.description}</p>
+  </main>
 </Layout>
