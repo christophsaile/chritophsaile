@@ -1,15 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getEntry, getEntries } from 'astro:content';
+import { getCollection } from 'astro:content';
 
-const intro = await getEntry('intro', 'content');
-const projects = await getEntries(intro.data.projects);
+const projects = await getCollection('projects');
 ---
 
 <Layout title='Christoph Saile'>
   <main class='px-7 py-32'>
-    <h1 class='text-4xl font-bold mb-8'>{intro.data.title}</h1>
-    <p class='text-lg'>{intro.data.description}</p>
     <section class='mt-16'>
       <h2 class='text-2xl font-bold mb-8'>Projects</h2>
       <ul class='grid grid-cols-1 gap-8'>
