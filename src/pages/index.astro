@@ -1,15 +1,27 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getEntry } from 'astro:content';
+import { getEntry, getEntries } from 'astro:content';
 
-// projects
-const kaesediebe = await getEntry('projects', 'kaesediebe');
-const ryno = await getEntry('projects', 'ryno');
+const intro = await getEntry('intro', 'content');
+const projects = await getEntries(intro.data.projects);
 ---
 
 <Layout title='Christoph Saile'>
   <main class='px-7 py-32'>
-    <h1 class='text-4xl font-bold mb-8'>{kaesediebe.data.title}</h1>
-    <p class='text-lg'>{kaesediebe.data.description}</p>
+    <h1 class='text-4xl font-bold mb-8'>{intro.data.title}</h1>
+    <p class='text-lg'>{intro.data.description}</p>
+    <section class='mt-16'>
+      <h2 class='text-2xl font-bold mb-8'>Projects</h2>
+      <ul class='grid grid-cols-1 gap-8'>
+        {
+          projects.map((project) => (
+            <li class='bg-gray-100 p-4 rounded-lg'>
+              <h3 class='text-xl font-bold'>{project.data.title}</h3>
+              <p>{project.data.description}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
   </main>
 </Layout>
