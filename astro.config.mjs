@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
 import lit from "@astrojs/lit";
 import tailwind from "@astrojs/tailwind";
 
@@ -8,5 +8,5 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
   integrations: [lit(), tailwind()],
   output: "server",
-  adapter: netlify()
+  adapter: netlify(),
 });
