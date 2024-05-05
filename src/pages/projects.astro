@@ -5,20 +5,15 @@ import { getCollection } from 'astro:content';
 const projects = await getCollection('projects');
 ---
 
-<Layout title='Christoph Saile'>
-  <main class='px-7 py-32'>
-    <section class='mt-16'>
-      <h2 class='text-2xl font-bold mb-8'>Projects</h2>
-      <ul class='grid grid-cols-1 gap-8'>
-        {
-          projects.map((project: any) => (
-            <li class='bg-gray-100 p-4 rounded-lg'>
-              <h3 class='text-xl font-bold'>{project.data.title}</h3>
-              <p>{project.data.description}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-  </main>
+<Layout title='Projects - Christoph Saile'>
+  <ul class='grid grid-cols-1 gap-8'>
+    {
+      projects.map((project: any) => (
+        <li class='bg-gray-100 p-4 rounded-lg'>
+          <h3 class='text-xl font-bold'>{project.data.title}</h3>
+          <p>{project.data.description}</p>
+        </li>
+      ))
+    }
+  </ul>
 </Layout>
