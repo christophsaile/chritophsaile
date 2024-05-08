@@ -5,7 +5,7 @@ const introCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    projects: z.array(reference('project')),
+    projects: z.array(reference('projects')),
   }),
 });
 

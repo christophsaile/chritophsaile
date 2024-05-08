@@ -1,0 +1,9 @@
+---
+const { title, description } = Astro.props;
+---
+
+<article class='flex flex-col'>
+  <h3 class='font-bold'>{title}</h3>
+  <p>{description}</p>
+  <a class='underline text-right' href='/projects'>visit page</a>
+</article>
