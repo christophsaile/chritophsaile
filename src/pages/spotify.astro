@@ -1,6 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
 export const prerender = false;
+import Layout from '../layouts/Layout.astro';
+import { myTopArtists } from '../libs/spotify';
+
+const artists = await (await myTopArtists('long_term')).json();
 ---
 
-<Layout title='Spotify - Christoph Saile'>Spotify</Layout>
+<Layout title='Spotify - Christoph Saile'>
+  Spotify
+  {
+    artists.items.map((item: any, index: number) => (
+      <div>
+        <h2>{item.name}</h2>
+        <img src={item.images[0].url} alt={item.name} />
+      </div>
+    ))
+  }
+</Layout>

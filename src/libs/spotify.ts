@@ -1,13 +1,13 @@
 export type TimeRange = 'long_term' | 'medium_term' | 'short_term';
 
 const getAccessToken = async () => {
-  const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
+  const refresh_token = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 
   const response = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
       Authorization: `Basic ${Buffer.from(
-        `${process.env.SPOTIFY_CLIENT_ID}:${process.env.SPOTIFY_CLIENT_SECRET}`
+        `${import.meta.env.SPOTIFY_CLIENT_ID}:${import.meta.env.SPOTIFY_CLIENT_SECRET}`
       ).toString('base64')}`,
       'Content-Type': 'application/x-www-form-urlencoded',
     },
