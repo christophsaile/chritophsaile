@@ -1,0 +1,21 @@
+---
+import type { SpotifyPlaylists } from '../../libs/spotify';
+import Tile from './Tile.astro';
+
+interface Props {
+  playlists: SpotifyPlaylists[];
+}
+const { playlists } = Astro.props;
+---
+
+<div>
+  {
+    playlists.map((playlist) => (
+      <Tile
+        title={playlist.name}
+        img={playlist.images}
+        externalUrl={playlist.external_urls.spotify}
+      />
+    ))
+  }
+</div>

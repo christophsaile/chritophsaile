@@ -20,6 +20,13 @@ export interface SpotifyTracks {
   name: string;
 }
 
+export interface SpotifyPlaylists {
+  id: string;
+  name: string;
+  images: SpotifyImage[];
+  external_urls: SpotifyExternalUrls;
+}
+
 interface SpotifyExternalUrls {
   spotify: string;
 }

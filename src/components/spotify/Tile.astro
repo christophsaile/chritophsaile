@@ -1,0 +1,21 @@
+---
+import Image from 'astro/components/Image.astro';
+import type { SpotifyImage } from '../../libs/spotify';
+interface Props {
+  title: string;
+  description?: string;
+  img: SpotifyImage[];
+  externalUrl: string;
+}
+
+const { title, description, img, externalUrl } = Astro.props;
+console.log(img);
+---
+
+<a href={externalUrl}>
+  <Image src={img[1]?.url || img[0].url} alt={title} height={160} width={160} />
+  <div>
+    <p>{title}</p>
+    {description && <p>{description}</p>}
+  </div>
+</a>
