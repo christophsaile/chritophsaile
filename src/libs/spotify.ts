@@ -1,4 +1,4 @@
-export type TimeRange = 'long_term' | 'medium_term' | 'short_term';
+export type TimeRange = "long_term" | "medium_term" | "short_term";
 
 export interface SpotifyArtists {
   genres: string[];
@@ -39,17 +39,17 @@ export interface SpotifyImage {
 const getAccessToken = async () => {
   const refresh_token = import.meta.env.SPOTIFY_REFRESH_TOKEN;
 
-  const response = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
+  const response = await fetch("https://accounts.spotify.com/api/token", {
+    method: "POST",
     headers: {
       Authorization: `Basic ${Buffer.from(
-        `${import.meta.env.SPOTIFY_CLIENT_ID}:${import.meta.env.SPOTIFY_CLIENT_SECRET}`
-      ).toString('base64')}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
+        `${import.meta.env.SPOTIFY_CLIENT_ID}:${import.meta.env.SPOTIFY_CLIENT_SECRET}`,
+      ).toString("base64")}`,
+      "Content-Type": "application/x-www-form-urlencoded",
     },
     body: new URLSearchParams({
-      grant_type: 'refresh_token',
-      refresh_token: refresh_token || '',
+      grant_type: "refresh_token",
+      refresh_token: refresh_token || "",
     }),
   });
 
@@ -59,7 +59,7 @@ const getAccessToken = async () => {
 export const spotifyProfile = async () => {
   const { access_token } = await getAccessToken();
 
-  return fetch('https://api.spotify.com/v1/me', {
+  return fetch("https://api.spotify.com/v1/me", {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
@@ -69,11 +69,14 @@ export const spotifyProfile = async () => {
 export const spotifyAlbums = async (offset: number, limit: number) => {
   const { access_token } = await getAccessToken();
 
-  return fetch(`https://api.spotify.com/v1/me/albums?offset=${offset}&limit=${limit}`, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
+  return fetch(
+    `https://api.spotify.com/v1/me/albums?offset=${offset}&limit=${limit}`,
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
     },
-  });
+  );
 };
 
 export const spotifyTopArtists = async (timeRange: TimeRange) => {
@@ -85,7 +88,7 @@ export const spotifyTopArtists = async (timeRange: TimeRange) => {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-    }
+    },
   );
 };
 
@@ -98,14 +101,14 @@ export const spotifyTopTracks = async (timeRange: TimeRange) => {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-    }
+    },
   );
 };
 
 export const spotifyPlaylists = async () => {
   const { access_token } = await getAccessToken();
 
-  return fetch('https://api.spotify.com/v1/me/playlists?&offset=0', {
+  return fetch("https://api.spotify.com/v1/me/playlists?&offset=0", {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },
@@ -115,7 +118,7 @@ export const spotifyPlaylists = async () => {
 export const currentlyPlayingSong = async () => {
   const { access_token } = await getAccessToken();
 
-  return fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+  return fetch("https://api.spotify.com/v1/me/player/currently-playing", {
     headers: {
       Authorization: `Bearer ${access_token}`,
     },

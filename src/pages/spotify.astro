@@ -5,10 +5,19 @@ import RankedList from '../components/spotify/RankedList.astro';
 import Layout from '../layouts/Layout.astro';
 import { spotifyPlaylists, spotifyTopArtists, spotifyTopTracks } from '../libs/spotify';
 import Playlists from '../components/spotify/Playlists.astro';
+import TimeFilters from '../components/spotify/TimeFilters.svelte';
 
 const content = await getEntry('spotify', 'content');
-const artists = await (await spotifyTopArtists('long_term')).json();
-const tracks = await (await spotifyTopTracks('long_term')).json();
+const artists = {
+  long: await (await spotifyTopArtists('long_term')).json(),
+  medium: await (await spotifyTopArtists('medium_term')).json(),
+  short: await (await spotifyTopArtists('short_term')).json(),
+};
+const tracks = {
+  long: await (await spotifyTopTracks('long_term')).json(),
+  medium: await (await spotifyTopTracks('medium_term')).json(),
+  short: await (await spotifyTopTracks('short_term')).json(),
+};
 const playlists = await (await spotifyPlaylists()).json();
 ---
 
@@ -17,10 +26,16 @@ const playlists = await (await spotifyPlaylists()).json();
     <h1>{content.data.title}</h1>
     <p>{content.data.description}</p>
     <section>
-      <RankedList artists={artists.items} />
+      <TimeFilters title='Top Artists' />
+      <RankedList artists={artists.short.items} />
+      <RankedList artists={artists.medium.items} />
+      <RankedList artists={artists.long.items} />
     </section>
     <section>
-      <RankedList tracks={tracks.items} />
+      <time-filters></time-filters>
+      <RankedList tracks={tracks.short.items} />
+      <RankedList tracks={tracks.medium.items} />
+      <RankedList tracks={tracks.long.items} />
     </section>
     <section>
       <Playlists playlists={playlists.items} />
