@@ -1,0 +1,37 @@
+---
+import type { SpotifyArtists, SpotifyTracks } from '../../libs/spotify';
+import RankedItem from './RankedItem.astro';
+interface Props {
+  tracks?: SpotifyTracks[];
+  artists?: SpotifyArtists[];
+}
+
+const { tracks, artists } = Astro.props;
+---
+
+<ol>
+  {
+    tracks &&
+      tracks.map((item) => (
+        <li>
+          <a>
+            <RankedItem
+              title={item.name}
+              description={item.artists.map((artist) => artist.name).join(', ')}
+              img={item.album.images}
+            />
+          </a>
+        </li>
+      ))
+  }
+  {
+    artists &&
+      artists.map((item) => (
+        <li>
+          <a>
+            <RankedItem title={item.name} description={item.genres.join(', ')} img={item.images} />
+          </a>
+        </li>
+      ))
+  }
+</ol>
