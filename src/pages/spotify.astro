@@ -25,17 +25,17 @@ const playlists = await (await spotifyPlaylists()).json();
   <div>
     <h1>{content.data.title}</h1>
     <p>{content.data.description}</p>
-    <section>
-      <TimeFilters title='Top Artists' />
-      <RankedList artists={artists.short.items} />
-      <RankedList artists={artists.medium.items} />
-      <RankedList artists={artists.long.items} />
+    <section class='ranked-section'>
+      <TimeFilters client:only='svelte' title='Top Artists' />
+      <RankedList active={true} timeRange='short_term' artists={artists.short.items} />
+      <RankedList active={false} timeRange='medium_term' artists={artists.medium.items} />
+      <RankedList active={false} timeRange='long_term' artists={artists.long.items} />
     </section>
-    <section>
-      <time-filters></time-filters>
-      <RankedList tracks={tracks.short.items} />
-      <RankedList tracks={tracks.medium.items} />
-      <RankedList tracks={tracks.long.items} />
+    <section class='ranked-section'>
+      <TimeFilters client:only='svelte' title='Top Tracks' />
+      <RankedList active={true} timeRange='short_term' tracks={tracks.short.items} />
+      <RankedList active={false} timeRange='medium_term' tracks={tracks.medium.items} />
+      <RankedList active={false} timeRange='long_term' tracks={tracks.long.items} />
     </section>
     <section>
       <Playlists playlists={playlists.items} />

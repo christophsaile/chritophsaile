@@ -1,15 +1,17 @@
 ---
-import type { SpotifyArtists, SpotifyTracks } from '../../libs/spotify';
+import type { SpotifyArtists, SpotifyTracks, TimeRange } from '../../libs/spotify';
 import RankedItem from './RankedItem.astro';
 interface Props {
   tracks?: SpotifyTracks[];
   artists?: SpotifyArtists[];
+  timeRange: TimeRange;
+  active: boolean;
 }
 
-const { tracks, artists } = Astro.props;
+const { tracks, artists, timeRange, active } = Astro.props;
 ---
 
-<ol>
+<ol class:list={['ranked-list', `${timeRange}`, { hidden: !active }]}>
   {
     tracks &&
       tracks.map((item) => (
