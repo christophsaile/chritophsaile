@@ -1,5 +1,6 @@
 import { spotifyPlaylists } from '../../src/libs/spotify.ts';
 
+// TODO: check you to increase the cache time
 export default async () => {
   // can't use getSpotifyAccessToken() from the spotify.ts file
   // since netlify edge-functions run on deno and not on node

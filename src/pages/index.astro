@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import HeadlineViewAll from '../components/HeadlineViewAll.astro';
 import ProjectPreview from '../components/ProjectPreview.astro';
 import { getEntry, getEntries } from 'astro:content';
+import PreviewPlaylists from '../components/spotify/PreviewPlaylists.svelte';
 
 const intro = await getEntry('intro', 'content');
 const projects = await getEntries(intro.data.projects);
@@ -17,5 +18,6 @@ const projects = await getEntries(intro.data.projects);
   </section>
   <section class='mt-16'>
     <HeadlineViewAll title='Latest Music' url='/spotify' />
+    <PreviewPlaylists client:idle />
   </section>
 </Layout>
