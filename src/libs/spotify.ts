@@ -1,4 +1,4 @@
-export type TimeRange = "long_term" | "medium_term" | "short_term";
+export type TimeRange = 'long_term' | 'medium_term' | 'short_term';
 
 export interface SpotifyArtists {
   genres: string[];
@@ -36,91 +36,78 @@ export interface SpotifyImage {
   width: number;
 }
 
-const getAccessToken = async () => {
-  const refresh_token = import.meta.env.SPOTIFY_REFRESH_TOKEN;
+export const getSpotifyAccessToken = async () => {
+  const refreshToken = import.meta.env.SPOTIFY_REFRESH_TOKEN;
+  const clientId = import.meta.env.SPOTIFY_CLIENT_ID;
+  const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
 
-  const response = await fetch("https://accounts.spotify.com/api/token", {
-    method: "POST",
+  const response = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
     headers: {
-      Authorization: `Basic ${Buffer.from(
-        `${import.meta.env.SPOTIFY_CLIENT_ID}:${import.meta.env.SPOTIFY_CLIENT_SECRET}`,
-      ).toString("base64")}`,
-      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: new URLSearchParams({
-      grant_type: "refresh_token",
-      refresh_token: refresh_token || "",
+      grant_type: 'refresh_token',
+      refresh_token: refreshToken || '',
     }),
   });
 
   return response.json();
 };
 
-export const spotifyProfile = async () => {
-  const { access_token } = await getAccessToken();
+export const spotifyProfile = async (accessToken?: string) => {
+  const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
-  return fetch("https://api.spotify.com/v1/me", {
+  return fetch('https://api.spotify.com/v1/me', {
     headers: {
-      Authorization: `Bearer ${access_token}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 };
 
-export const spotifyAlbums = async (offset: number, limit: number) => {
-  const { access_token } = await getAccessToken();
-
-  return fetch(
-    `https://api.spotify.com/v1/me/albums?offset=${offset}&limit=${limit}`,
-    {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    },
-  );
-};
-
-export const spotifyTopArtists = async (timeRange: TimeRange) => {
-  const { access_token } = await getAccessToken();
+export const spotifyTopArtists = async (timeRange: TimeRange, accessToken?: string) => {
+  const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
   return fetch(
     `https://api.spotify.com/v1/me/top/artists?time_range=${timeRange}&limit=10&offset=0`,
     {
       headers: {
-        Authorization: `Bearer ${access_token}`,
+        Authorization: `Bearer ${token}`,
       },
-    },
+    }
   );
 };
 
-export const spotifyTopTracks = async (timeRange: TimeRange) => {
-  const { access_token } = await getAccessToken();
+export const spotifyTopTracks = async (timeRange: TimeRange, accessToken?: string) => {
+  const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
   return fetch(
     `https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}&limit=10&offset=0`,
     {
       headers: {
-        Authorization: `Bearer ${access_token}`,
+        Authorization: `Bearer ${token}`,
       },
-    },
+    }
   );
 };
 
-export const spotifyPlaylists = async () => {
-  const { access_token } = await getAccessToken();
+export const spotifyPlaylists = async (accessToken?: string) => {
+  const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
-  return fetch("https://api.spotify.com/v1/me/playlists?&offset=0", {
+  return fetch('https://api.spotify.com/v1/me/playlists?&offset=0', {
     headers: {
-      Authorization: `Bearer ${access_token}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 };
 
-export const currentlyPlayingSong = async () => {
-  const { access_token } = await getAccessToken();
+export const currentlyPlayingSong = async (accessToken?: string) => {
+  const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
-  return fetch("https://api.spotify.com/v1/me/player/currently-playing", {
+  return fetch('https://api.spotify.com/v1/me/player/currently-playing', {
     headers: {
-      Authorization: `Bearer ${access_token}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 };

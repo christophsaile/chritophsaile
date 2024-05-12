@@ -1,24 +1,54 @@
 ---
 export const prerender = false;
+// cache the page for 1 day
+Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=86400, must-revalidate');
+
 import { getEntry } from 'astro:content';
 import RankedList from '../components/spotify/RankedList.astro';
 import Layout from '../layouts/Layout.astro';
-import { spotifyPlaylists, spotifyTopArtists, spotifyTopTracks } from '../libs/spotify';
+import {
+  spotifyPlaylists,
+  spotifyTopArtists,
+  spotifyTopTracks,
+  getSpotifyAccessToken,
+} from '../libs/spotify';
 import Playlists from '../components/spotify/Playlists.astro';
 import TimeFilters from '../components/spotify/TimeFilters.svelte';
 
 const content = await getEntry('spotify', 'content');
+const { access_token } = await getSpotifyAccessToken();
+
+const [
+  longArtists,
+  mediumArtists,
+  shortArtists,
+  longTracks,
+  mediumTracks,
+  shortTracks,
+  userPlaylists,
+] = await Promise.all([
+  spotifyTopArtists('long_term', access_token).then((response) => response.json()),
+  spotifyTopArtists('medium_term', access_token).then((response) => response.json()),
+  spotifyTopArtists('short_term', access_token).then((response) => response.json()),
+  spotifyTopTracks('long_term', access_token).then((response) => response.json()),
+  spotifyTopTracks('medium_term', access_token).then((response) => response.json()),
+  spotifyTopTracks('short_term', access_token).then((response) => response.json()),
+  spotifyPlaylists(access_token).then((response) => response.json()),
+]);
+
 const artists = {
-  long: await (await spotifyTopArtists('long_term')).json(),
-  medium: await (await spotifyTopArtists('medium_term')).json(),
-  short: await (await spotifyTopArtists('short_term')).json(),
+  long: longArtists,
+  medium: mediumArtists,
+  short: shortArtists,
 };
+
 const tracks = {
-  long: await (await spotifyTopTracks('long_term')).json(),
-  medium: await (await spotifyTopTracks('medium_term')).json(),
-  short: await (await spotifyTopTracks('short_term')).json(),
+  long: longTracks,
+  medium: mediumTracks,
+  short: shortTracks,
 };
-const playlists = await (await spotifyPlaylists()).json();
+
+const playlists = userPlaylists;
 ---
 
 <Layout title='Spotify - Christoph Saile'>
