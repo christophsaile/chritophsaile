@@ -41,6 +41,10 @@ export const getSpotifyAccessToken = async () => {
   const clientId = import.meta.env.SPOTIFY_CLIENT_ID;
   const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
 
+  if (!refreshToken || !clientId || !clientSecret) {
+    throw new Error('Missing required environment variables for Spotify API');
+  }
+
   const response = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {

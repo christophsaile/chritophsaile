@@ -18,6 +18,8 @@ import TimeFilters from '../components/spotify/TimeFilters.svelte';
 const content = await getEntry('spotify', 'content');
 const { access_token } = await getSpotifyAccessToken();
 
+// TODO: think about only fetching the data that is visible to the user
+// fetch other data when the user interacts with the page
 const [
   longArtists,
   mediumArtists,
