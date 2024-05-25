@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+main {
+  @apply px-7 py-32;
+}
+
 @layer components {
   .headline {
     @apply text-3xl font-bold sm:text-4xl text-black leading-tight;

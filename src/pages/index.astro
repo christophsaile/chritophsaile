@@ -10,18 +10,18 @@ const projects = await getEntries(intro.data.projects);
 ---
 
 <Layout title='Christoph Saile'>
-  <div class='flex flex-col gap-20'>
+  <main class='flex flex-col gap-20'>
     <div>
       <h1 class='text-4xl font-bold mb-4'>{intro.data.title}</h1>
       <p class='text-xl'>{intro.data.description}</p>
     </div>
     <section class='flex flex-col gap-6'>
-      <HeadlineViewAll title='Selected Projects' url='/projects' />
+      <HeadlineViewAll title='Latest Projects' url='/latest-projects' />
       {projects.map((project: any) => <ProjectPreview {...project.data} />)}
     </section>
     <section class='flex flex-col gap-6'>
-      <HeadlineViewAll title='Latest Music' url='/spotify' />
+      <HeadlineViewAll title='Latest Music' url='/latest-music' />
       <PreviewSpotifyIntro client:idle />
     </section>
-  </div>
+  </main>
 </Layout>

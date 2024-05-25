@@ -1,0 +1,20 @@
+---
+import ProjectPreview from '../components/ProjectPreview.astro';
+import Layout from '../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+const projects = await getCollection('projects');
+const content = await getEntry('latest-projects', 'content');
+---
+
+<Layout title='Projects - Christoph Saile'>
+  <main class='flex flex-col gap-20'>
+    <div>
+      <h1 class='text-4xl font-bold mb-4'>{content.data.title}</h1>
+      <p class='text-xl'>{content.data.description}</p>
+    </div>
+    <ul class='grid grid-cols-1 gap-8'>
+      {projects.map((project: any) => <ProjectPreview {...project.data} />)}
+    </ul>
+  </main>
+</Layout>

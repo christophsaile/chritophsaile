@@ -15,7 +15,7 @@ import {
 import Playlists from '../components/spotify/Playlists.astro';
 import TimeFilters from '../components/spotify/TimeFilters.svelte';
 
-const content = await getEntry('spotify', 'content');
+const content = await getEntry('latest-music', 'content');
 const { access_token } = await getSpotifyAccessToken();
 
 // TODO: think about only fetching the data that is visible to the user
@@ -54,7 +54,7 @@ const playlists = userPlaylists;
 ---
 
 <Layout title='Spotify - Christoph Saile'>
-  <div class='flex flex-col gap-20'>
+  <main class='flex flex-col gap-20'>
     <div>
       <h1 class='text-4xl font-bold mb-4'>{content.data.title}</h1>
       <p class='text-xl'>{content.data.description}</p>
@@ -79,5 +79,5 @@ const playlists = userPlaylists;
       <h2 class='text-xl font-bold mb-10'>My Playlists</h2>
       <Playlists playlists={playlists.items} />
     </section>
-  </div>
+  </main>
 </Layout>

@@ -2,16 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title='Menu - Christoph Saile'>
-  <ul>
-    <li>
-      <a href='/'>Home</a>
-    </li>
-    <li>
-      <a href='/projects'>Selected Projects</a>
-    </li>
-    <li>
-      <a href='/spotify'>Spotify</a>
-    </li>
-  </ul>
+<Layout title='Menu - Christoph Saile' header={false}>
+  <main class='flex place-items-center py-0 h-svh bg-amber-400'>
+    <ul class='flex flex-col gap-2 text-2xl font-bold'>
+      <li>
+        <a href='/'>Home</a>
+      </li>
+      <li>
+        <a href='/latest-projects'>Latest Projects</a>
+      </li>
+      <li>
+        <a href='/latest-music'>Latest Music</a>
+      </li>
+      <!-- <li>
+        <a href='/latest-music'>Latest Activities</a>
+      </li> -->
+    </ul>
+  </main>
 </Layout>
