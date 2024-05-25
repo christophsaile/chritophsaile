@@ -70,11 +70,11 @@ export const spotifyProfile = async (accessToken?: string) => {
   });
 };
 
-export const spotifyTopArtists = async (timeRange: TimeRange, accessToken?: string) => {
+export const spotifyTopArtists = async (timeRange: TimeRange, limit = 10, accessToken?: string) => {
   const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
   return fetch(
-    `https://api.spotify.com/v1/me/top/artists?time_range=${timeRange}&limit=10&offset=0`,
+    `https://api.spotify.com/v1/me/top/artists?time_range=${timeRange}&limit=${limit}&offset=0`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -83,11 +83,11 @@ export const spotifyTopArtists = async (timeRange: TimeRange, accessToken?: stri
   );
 };
 
-export const spotifyTopTracks = async (timeRange: TimeRange, accessToken?: string) => {
+export const spotifyTopTracks = async (timeRange: TimeRange, limit = 10, accessToken?: string) => {
   const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
   return fetch(
-    `https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}&limit=10&offset=0`,
+    `https://api.spotify.com/v1/me/top/tracks?time_range=${timeRange}&limit=${limit}&offset=0`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

@@ -1,7 +1,11 @@
-import { spotifyPlaylists } from '../../src/libs/spotify.ts';
+import { spotifyTopTracks } from '../../src/libs/spotify.ts';
+import { type TimeRange } from '../../src/libs/spotify.ts';
 
 // TODO: check you to increase the cache time
-export default async () => {
+export default async (request: Request) => {
+  const timeRange =
+    (new URL(request.url).searchParams.get('timeRange') as TimeRange) || 'short_term';
+
   // can't use getSpotifyAccessToken() from the spotify.ts file
   // since netlify edge-functions run on deno and not on node
   const getSpotifyAccessToken = async () => {
@@ -29,7 +33,7 @@ export default async () => {
   };
 
   const { access_token } = await getSpotifyAccessToken();
-  const data = await (await spotifyPlaylists(access_token)).json();
+  const data = await (await spotifyTopTracks(timeRange, 6, access_token)).json();
   return new Response(JSON.stringify(data), {
     headers: {
       'content-type': 'application/json',
@@ -37,4 +41,4 @@ export default async () => {
   });
 };
 
-export const config = { path: '/get-playlists' };
+export const config = { path: '/get-tracks' };
