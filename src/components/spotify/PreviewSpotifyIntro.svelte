@@ -5,7 +5,7 @@
 </script>
 
 {#await tracksPromise then tracks}
-  <div class="grid grid-cols-2 gap-5">
+  <div class="grid grid-cols-2 gap-5 md:flex md:flex-wrap md:place-content-between">
     {#each tracks.items as track (track.id)}
       <Tile
         title={track.name}
