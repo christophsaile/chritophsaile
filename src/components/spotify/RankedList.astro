@@ -11,7 +11,13 @@ interface Props {
 const { tracks, artists, timeRange, active } = Astro.props;
 ---
 
-<ol class:list={['ranked-list', `${timeRange}`, { hidden: !active }]}>
+<ol
+  class:list={[
+    'ranked-list flex flex-col gap-3 list-decimal ',
+    `${timeRange}`,
+    { hidden: !active },
+  ]}
+>
   {
     tracks &&
       tracks.map((item) => (

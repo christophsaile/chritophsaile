@@ -1,7 +1,6 @@
 import { spotifyTopTracks } from '../../src/libs/spotify.ts';
 import { type TimeRange } from '../../src/libs/spotify.ts';
 
-// TODO: check you to increase the cache time
 export default async (request: Request) => {
   const timeRange =
     (new URL(request.url).searchParams.get('timeRange') as TimeRange) || 'short_term';
@@ -41,4 +40,5 @@ export default async (request: Request) => {
   });
 };
 
-export const config = { path: '/get-tracks' };
+// TODO: check you to increase the cache time
+export const config = { path: '/get-tracks', cache: 'manual' };

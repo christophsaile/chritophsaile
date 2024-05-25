@@ -14,9 +14,9 @@
   }
 </script>
 
-<div bind:this={elem}>
-  <h2>{title}</h2>
-  <ul class="flex">
+<div class="flex flex-col gap-2" bind:this={elem}>
+  <h2 class="text-xl font-bold">{title}</h2>
+  <ul class="flex gap-3">
     <li>
       <button on:click={() => handleClick('short_term')}>recent</button>
     </li>
