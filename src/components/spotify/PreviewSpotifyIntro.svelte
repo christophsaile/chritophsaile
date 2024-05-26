@@ -5,7 +5,7 @@
 </script>
 
 {#await tracksPromise then tracks}
-  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+  <div class="grid grid-cols-2 gap-5 sm:flex sm:flex-wrap sm:justify-between sm:gap-8">
     {#each tracks.items as track (track.id)}
       <Tile
         title={track.name}

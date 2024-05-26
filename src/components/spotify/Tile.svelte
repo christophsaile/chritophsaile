@@ -18,35 +18,15 @@
 </a>
 
 <style>
-  @media (min-width: 640px) {
-    .grid-item:nth-child(3n + 1) {
-      justify-self: start; /* Aligns the first item of each row to the left */
-    }
-
-    .grid-item:nth-child(3n + 2) {
-      justify-self: center; /* Aligns the second item of each row in the center */
-    }
-
-    .grid-item:nth-child(3n + 3) {
-      justify-self: end; /* Aligns the third item of each row to the right */
-    }
+  .grid-item:last-child,
+  .grid-item:nth-last-child(2) {
+    display: none;
   }
 
-  @media (min-width: 1024px) {
-    .grid-item:nth-child(4n + 1) {
-      justify-self: start; /* Aligns the first item of each row to the left */
-    }
-
-    .grid-item:nth-child(4n + 2) {
-      justify-self: center; /* Aligns the second item of each row in the center */
-    }
-
-    .grid-item:nth-child(4n + 3) {
-      justify-self: center; /* Aligns the second item of each row in the center */
-    }
-
-    .grid-item:nth-child(4n + 4) {
-      justify-self: end; /* Aligns the third item of each row to the right */
+  @media (min-width: 896px) {
+    .grid-item:last-child,
+    .grid-item:nth-last-child(2) {
+      display: block;
     }
   }
 </style>

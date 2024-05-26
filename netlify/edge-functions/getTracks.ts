@@ -32,7 +32,7 @@ export default async (request: Request) => {
   };
 
   const { access_token } = await getSpotifyAccessToken();
-  const data = await (await spotifyTopTracks(timeRange, 6, access_token)).json();
+  const data = await (await spotifyTopTracks(timeRange, 8, access_token)).json();
   return new Response(JSON.stringify(data), {
     headers: {
       'content-type': 'application/json',
