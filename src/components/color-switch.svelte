@@ -30,13 +30,9 @@
     };
 
     localStorage.setItem('theme', JSON.stringify(storage));
-    setTheme(theme);
-  }
 
-  function setTheme(theme: string) {
     bodyClasses.remove(...Object.values(themes).map((theme) => theme.bg));
     bodyClasses.add(themes[theme].bg);
-
     navClasses?.remove(...Object.values(themes).map((theme) => theme.nav));
     navClasses?.add(themes[theme].nav);
   }
