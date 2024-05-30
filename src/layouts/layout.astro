@@ -35,10 +35,9 @@ const { title, header = true } = Astro.props;
           : {
               white: { name: 'white', bg: 'bg-white', nav: 'bg-brand-yellow-light' },
             };
-        document.body.classList.add(theme.bg);
-        document.querySelector('header').classList.add(theme.nav);
+        document.body.classList.add(theme.white.bg);
+        document.querySelector('header').classList.add(theme.white.nav);
       }
-
       setTheme(document);
 
       document.addEventListener('astro:before-swap', (ev) => {
