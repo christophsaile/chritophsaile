@@ -4,10 +4,22 @@
 
   const themes: { [key: string]: { name: string; bg: string; nav: string } } = {
     white: { name: 'white', bg: 'bg-white', nav: 'bg-brand-yellow-light' },
-    purple: { name: 'purple', bg: 'bg-brand-purple', nav: 'bg-brand-yellow-light' },
-    orange: { name: 'orange', bg: 'bg-brand-orange', nav: 'bg-brand-yellow-light' },
+    purple: {
+      name: 'purple',
+      bg: 'bg-brand-purple',
+      nav: 'bg-brand-yellow-light',
+    },
+    orange: {
+      name: 'orange',
+      bg: 'bg-brand-orange',
+      nav: 'bg-brand-yellow-light',
+    },
     yellow: { name: 'yellow', bg: 'bg-brand-yellow', nav: 'bg-brand-purple' },
-    green: { name: 'green', bg: 'bg-brand-green', nav: 'bg-brand-yellow-light' },
+    green: {
+      name: 'green',
+      bg: 'bg-brand-green',
+      nav: 'bg-brand-yellow-light',
+    },
   };
 
   const initialThemes = ['purple', 'orange', 'yellow', 'green'];
@@ -39,16 +51,21 @@
 </script>
 
 <div
-  class="absolute left-0 right-0 w-full pt-2 px-7 md:px-20 lg:w-[1024px] lg:mx-auto flex justify-end"
+  class="absolute left-0 right-0 w-full pt-4 px-7 md:px-20 lg:w-[1024px] lg:mx-auto flex justify-end"
 >
-  <div class="flex gap-2 items-center">
-    <p class="text-sm">Switch Theme</p>
-    {#each currentTheme as theme, index}
-      <button
-        on:click={() => toggleTheme(themes[theme].name, index)}
-        aria-label={themes[theme].name}
-        class="w-6 h-6 rounded-full shadow-sm {themes[theme].bg}"
-      ></button>
-    {/each}
+  <div class="flex flex-col gap-2">
+    <p class="text-sm text-right">switch theme</p>
+    <ul class="flex gap-2 list-none text-[0]">
+      {#each currentTheme as theme, index}
+        <li>
+          <button
+            on:click={() => toggleTheme(themes[theme].name, index)}
+            class="w-6 h-6 rounded-full shadow-sm {themes[theme]
+              .bg} hover:scale-110"
+            ><span class="sr-only">{themes[theme].name}</span></button
+          >
+        </li>
+      {/each}
+    </ul>
   </div>
 </div>
