@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import HeadlineViewAll from '../components/HeadlineViewAll.astro';
-import ProjectPreview from '../components/ProjectPreview.astro';
+import Layout from '../layouts/layout.astro';
+import HeadlineViewAll from '../components/intro/headline-viewl-all.astro';
+import ProjectPreview from '../components/intro/project-preview.astro';
 import { getEntry, getEntries } from 'astro:content';
-import PreviewSpotifyIntro from '../components/spotify/PreviewSpotifyIntro.svelte';
+import PreviewLatestMusic from '../components/intro/preview-latest-music.svelte';
 
 const intro = await getEntry('intro', 'content');
 const projects = await getEntries(intro.data.projects);
@@ -23,7 +23,7 @@ const projects = await getEntries(intro.data.projects);
     </section>
     <section class='flex flex-col'>
       <HeadlineViewAll title='Latest Music' url='/latest-music' />
-      <PreviewSpotifyIntro client:idle />
+      <PreviewLatestMusic client:idle />
     </section>
   </main>
 </Layout>

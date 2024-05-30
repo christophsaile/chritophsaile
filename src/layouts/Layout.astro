@@ -1,5 +1,6 @@
 ---
-import Header from '../components/Header.astro';
+import Header from './header.astro';
+import ColorSwitch from '../components/color-switch.svelte';
 import '../styles/main.css';
 interface Props {
   title: string;
@@ -19,7 +20,8 @@ const { title, header = true } = Astro.props;
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class='bg-white'>
+    <ColorSwitch client:idle />
     <slot />
     {header && <Header />}
   </body>

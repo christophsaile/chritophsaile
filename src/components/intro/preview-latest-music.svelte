@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Tile from './Tile.svelte';
+  import Tile from '../latest-music/tile.svelte';
 
   let tracksPromise = fetch('/get-tracks?timeRange=short_term').then((res) => res.json());
 </script>

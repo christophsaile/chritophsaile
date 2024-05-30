@@ -4,16 +4,16 @@ export const prerender = false;
 Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=86400, must-revalidate');
 
 import { getEntry } from 'astro:content';
-import RankedList from '../components/spotify/RankedList.astro';
-import Layout from '../layouts/Layout.astro';
+import RankedList from '../components/latest-music/ranked-list.astro';
+import Layout from '../layouts/layout.astro';
 import {
   spotifyPlaylists,
   spotifyTopArtists,
   spotifyTopTracks,
   getSpotifyAccessToken,
 } from '../libs/spotify';
-import Playlists from '../components/spotify/Playlists.astro';
-import TimeFilters from '../components/spotify/TimeFilters.svelte';
+import Playlists from '../components/latest-music/playlists.astro';
+import TimeFilters from '../components/latest-music/time-filters.svelte';
 
 const content = await getEntry('latest-music', 'content');
 const { access_token } = await getSpotifyAccessToken();
