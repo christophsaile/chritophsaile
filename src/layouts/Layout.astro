@@ -2,6 +2,8 @@
 import Header from './header.astro';
 import ColorSwitch from '../components/color-switch.svelte';
 import '../styles/main.css';
+import { ViewTransitions } from 'astro:transitions';
+
 interface Props {
   title: string;
   header?: boolean;
@@ -19,16 +21,29 @@ const { title, header = true } = Astro.props;
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <meta name='generator' content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
-  <body class='bg-white'>
-    <ColorSwitch client:idle />
+  <body>
+    <ColorSwitch client:only='svelte' />
     <slot />
     {header && <Header />}
+    <script is:inline>
+      function setTheme(document) {
+        if (localStorage.getItem('theme')) {
+          const theme = JSON.parse(localStorage.getItem('theme') || '').active || {
+            white: { name: 'white', bg: 'bg-white', nav: 'bg-brand-yellow-light' },
+          };
+          document.body.classList.add(theme.bg);
+          document.querySelector('header').classList.add(theme.nav);
+        }
+      }
+
+      setTheme(document);
+
+      document.addEventListener('astro:before-swap', (ev) => {
+        // Pass the incoming document to set the theme on it
+        setTheme(ev.newDocument);
+      });
+    </script>
   </body>
 </html>
-<style is:global>
-  html {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #ffffff;
-  }
-</style>
