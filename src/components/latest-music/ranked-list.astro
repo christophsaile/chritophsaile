@@ -1,5 +1,9 @@
 ---
-import type { SpotifyArtists, SpotifyTracks, TimeRange } from '../../libs/spotify';
+import type {
+  SpotifyArtists,
+  SpotifyTracks,
+  TimeRange,
+} from '../../libs/spotify';
 import RankedItem from './ranked-item.astro';
 interface Props {
   tracks?: SpotifyTracks[];
@@ -37,7 +41,11 @@ const { tracks, artists, timeRange, active } = Astro.props;
       artists.map((item) => (
         <li>
           <a>
-            <RankedItem title={item.name} description={item.genres.join(', ')} img={item.images} />
+            <RankedItem
+              title={item.name}
+              description={item.genres.join(', ')}
+              img={item.images}
+            />
           </a>
         </li>
       ))

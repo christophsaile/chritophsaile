@@ -1,4 +1,4 @@
-export type TimeRange = "long_term" | "medium_term" | "short_term";
+export type TimeRange = 'long_term' | 'medium_term' | 'short_term';
 
 export interface SpotifyArtists {
   genres: string[];
@@ -42,18 +42,18 @@ export const getSpotifyAccessToken = async () => {
   const clientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
 
   if (!refreshToken || !clientId || !clientSecret) {
-    throw new Error("Missing required environment variables for Spotify API");
+    throw new Error('Missing required environment variables for Spotify API');
   }
 
-  const response = await fetch("https://accounts.spotify.com/api/token", {
-    method: "POST",
+  const response = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
     headers: {
-      Authorization: `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString("base64")}`,
-      "Content-Type": "application/x-www-form-urlencoded",
+      Authorization: `Basic ${Buffer.from(`${clientId}:${clientSecret}`).toString('base64')}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
     body: new URLSearchParams({
-      grant_type: "refresh_token",
-      refresh_token: refreshToken || "",
+      grant_type: 'refresh_token',
+      refresh_token: refreshToken || '',
     }),
   });
 
@@ -63,7 +63,7 @@ export const getSpotifyAccessToken = async () => {
 export const spotifyProfile = async (accessToken?: string) => {
   const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
-  return fetch("https://api.spotify.com/v1/me", {
+  return fetch('https://api.spotify.com/v1/me', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -73,7 +73,7 @@ export const spotifyProfile = async (accessToken?: string) => {
 export const spotifyTopArtists = async (
   timeRange: TimeRange,
   limit = 10,
-  accessToken?: string,
+  accessToken?: string
 ) => {
   const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
@@ -83,14 +83,14 @@ export const spotifyTopArtists = async (
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    },
+    }
   );
 };
 
 export const spotifyTopTracks = async (
   timeRange: TimeRange,
   limit = 10,
-  accessToken?: string,
+  accessToken?: string
 ) => {
   const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
@@ -100,14 +100,14 @@ export const spotifyTopTracks = async (
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    },
+    }
   );
 };
 
 export const spotifyPlaylists = async (accessToken?: string) => {
   const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
-  return fetch("https://api.spotify.com/v1/me/playlists?&offset=0", {
+  return fetch('https://api.spotify.com/v1/me/playlists?&offset=0', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -117,7 +117,7 @@ export const spotifyPlaylists = async (accessToken?: string) => {
 export const currentlyPlayingSong = async (accessToken?: string) => {
   const token = accessToken || (await getSpotifyAccessToken()).access_token;
 
-  return fetch("https://api.spotify.com/v1/me/player/currently-playing", {
+  return fetch('https://api.spotify.com/v1/me/player/currently-playing', {
     headers: {
       Authorization: `Bearer ${token}`,
     },
