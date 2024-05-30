@@ -33,10 +33,12 @@ const { title, header = true } = Astro.props;
         const theme = getTheme
           ? JSON.parse(getTheme).active
           : {
-              white: { name: 'white', bg: 'bg-white', nav: 'bg-brand-yellow-light' },
+              name: 'white',
+              bg: 'bg-white',
+              nav: 'bg-brand-yellow-light',
             };
-        document.body.classList.add(theme.white.bg);
-        document.querySelector('header').classList.add(theme.white.nav);
+        document.body.classList.add(theme.bg);
+        document.querySelector('header')?.classList.add(theme.nav);
       }
       setTheme(document);
 
