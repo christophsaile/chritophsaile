@@ -13,36 +13,38 @@ const { tracks, artists, timeRange, active } = Astro.props;
 
 <ol
   class:list={[
-    'grid gap-4 md:grid-cols-2 md:grid-rows-5 md:grid-flow-col',
+    'ranked-list grid gap-4 md:grid-cols-2 md:grid-rows-5 md:grid-flow-col',
     `${timeRange}`,
     { hidden: !active },
   ]}
 >
   {
     tracks?.map((item, index) => (
-      <li class='flex gap-1'>
-        <span class='min-w-8 text-lg' aria-hidden='true'>
+      <li class='flex gap-1 p-3 lg:p-4 bg-gray-200 hover:bg-gray-300 hover:transition-colors rounded-md items-center'>
+        <span class='min-w-7' aria-hidden='true'>
           {index + 1}.
         </span>
-        <a>
-          <RankedItem
-            title={item.name}
-            description={item.artists.map((artist) => artist.name).join(', ')}
-            img={item.album.images}
-          />
-        </a>
+        <RankedItem
+          title={item.name}
+          description={item.artists.map((artist) => artist.name).join(', ')}
+          img={item.album.images}
+          href={item.external_urls.spotify}
+        />
       </li>
     ))
   }
   {
     artists?.map((item, index) => (
-      <li class='flex gap-1'>
-        <span class=' min-w-8 text-lg' aria-hidden='true'>
+      <li class='flex gap-1 p-3 lg:p-4 bg-gray-200 hover:bg-gray-300 rounded-md items-center'>
+        <span class=' min-w-7' aria-hidden='true'>
           {index + 1}.
         </span>
-        <a class='w-auto'>
-          <RankedItem title={item.name} description={item.genres.join(', ')} img={item.images} />
-        </a>
+        <RankedItem
+          title={item.name}
+          description={item.genres.join(', ')}
+          img={item.images}
+          href={item.external_urls.spotify}
+        />
       </li>
     ))
   }

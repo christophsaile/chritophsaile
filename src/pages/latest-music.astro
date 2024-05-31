@@ -65,17 +65,21 @@ const playlists = userPlaylists;
       <div class='mb-10'>
         <TimeFilters client:only='svelte' title='Top Tracks' />
       </div>
-      <RankedList active={true} timeRange='short_term' tracks={tracks.short.items} />
-      <RankedList active={false} timeRange='medium_term' tracks={tracks.medium.items} />
-      <RankedList active={false} timeRange='long_term' tracks={tracks.long.items} />
+      <div>
+        <RankedList active={true} timeRange='short_term' tracks={tracks.short.items} />
+        <RankedList active={false} timeRange='medium_term' tracks={tracks.medium.items} />
+        <RankedList active={false} timeRange='long_term' tracks={tracks.long.items} />
+      </div>
     </section>
     <section class='ranked-section'>
       <div class='mb-10'>
         <TimeFilters client:only='svelte' title='Top Artists' />
       </div>
-      <RankedList active={true} timeRange='short_term' artists={artists.short.items} />
-      <RankedList active={false} timeRange='medium_term' artists={artists.medium.items} />
-      <RankedList active={false} timeRange='long_term' artists={artists.long.items} />
+      <div>
+        <RankedList active={true} timeRange='short_term' artists={artists.short.items} />
+        <RankedList active={false} timeRange='medium_term' artists={artists.medium.items} />
+        <RankedList active={false} timeRange='long_term' artists={artists.long.items} />
+      </div>
     </section>
     <section>
       <h2 class='text-xl font-bold mb-10'>My Playlists</h2>

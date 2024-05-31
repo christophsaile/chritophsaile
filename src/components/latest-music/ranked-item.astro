@@ -5,15 +5,28 @@ interface Props {
   title: string;
   description: string;
   img: SpotifyImage[];
+  href: string;
 }
 
-const { title, description, img } = Astro.props;
+const { title, description, img, href } = Astro.props;
 ---
 
-<div class='flex gap-4'>
-  <Image class='rounded-sm' src={img[2].url} alt='' width={64} height={64} />
+<a class='flex w-full pr-1 lg:pr-2 text-black' href={href}>
+  <Image class='rounded-sm h-16 mr-3 lg:mr-4' src={img[2].url} alt='' width={64} height={64} />
   <div class='flex flex-col'>
     <p class='font-bold'>{title}</p>
-    <p>{description}</p>
+    <p class='text-sm break-words'>{description}</p>
   </div>
-</div>
+  <svg
+    aria-hidden='true'
+    xmlns='http://www.w3.org/2000/svg'
+    fill='none'
+    viewBox='0 0 24 24'
+    stroke-width='1.5'
+    stroke='currentColor'
+    class='size-4 ml-auto self-end text-gray-500 shrink-0'
+  >
+    <path stroke-linecap='round' stroke-linejoin='round' d='m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25'
+    ></path>
+  </svg>
+</a>

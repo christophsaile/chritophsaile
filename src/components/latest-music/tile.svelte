@@ -8,7 +8,13 @@
 </script>
 
 <a class="max-w-40" href={externalUrl}>
-  <img src={img[1]?.url || img[0].url} alt={title} height={160} width={160} />
+  <img
+    class="rounded-sm"
+    src={img[1]?.url || img[0].url}
+    alt={title}
+    height={160}
+    width={160}
+  />
   <div>
     <p class="font-bold">{title}</p>
     {#if description}

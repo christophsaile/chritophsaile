@@ -10,4 +10,12 @@ main {
   .headline {
     @apply text-3xl font-bold sm:text-4xl text-black leading-tight;
   }
+
+  .btn {
+    @apply px-3 py-1 rounded-md text-black bg-white  hover:bg-gray-200 hover:transition-colors;
+  }
+
+  .btn-active {
+    @apply bg-brand-yellow-light hover:bg-brand-yellow-light;
+  }
 }
