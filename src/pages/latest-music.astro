@@ -1,10 +1,7 @@
 ---
 export const prerender = false;
 // cache the page for 1 day
-Astro.response.headers.set(
-  'CDN-Cache-Control',
-  'public, max-age=86400, must-revalidate'
-);
+Astro.response.headers.set('CDN-Cache-Control', 'public, max-age=86400, must-revalidate');
 
 import { getEntry } from 'astro:content';
 import RankedList from '../components/latest-music/ranked-list.astro';
@@ -32,24 +29,12 @@ const [
   shortTracks,
   userPlaylists,
 ] = await Promise.all([
-  spotifyTopArtists('long_term', 10, access_token).then((response) =>
-    response.json()
-  ),
-  spotifyTopArtists('medium_term', 10, access_token).then((response) =>
-    response.json()
-  ),
-  spotifyTopArtists('short_term', 10, access_token).then((response) =>
-    response.json()
-  ),
-  spotifyTopTracks('long_term', 10, access_token).then((response) =>
-    response.json()
-  ),
-  spotifyTopTracks('medium_term', 10, access_token).then((response) =>
-    response.json()
-  ),
-  spotifyTopTracks('short_term', 10, access_token).then((response) =>
-    response.json()
-  ),
+  spotifyTopArtists('long_term', 10, access_token).then((response) => response.json()),
+  spotifyTopArtists('medium_term', 10, access_token).then((response) => response.json()),
+  spotifyTopArtists('short_term', 10, access_token).then((response) => response.json()),
+  spotifyTopTracks('long_term', 10, access_token).then((response) => response.json()),
+  spotifyTopTracks('medium_term', 10, access_token).then((response) => response.json()),
+  spotifyTopTracks('short_term', 10, access_token).then((response) => response.json()),
   spotifyPlaylists(access_token).then((response) => response.json()),
 ]);
 
@@ -72,47 +57,25 @@ const playlists = userPlaylists;
   <main class='flex flex-col gap-20 md:gap-24'>
     <div class='md:w-3/5'>
       <h1 class='text-4xl font-bold mb-4'>{content.data.title}</h1>
-      <p class='text-xl'>{content.data.description}</p>
+      <p class='text-xl'>
+        {content.data.description}
+      </p>
     </div>
-    <section class='ranked-section'>
-      <div class='mb-10'>
-        <TimeFilters client:only='svelte' title='Top Artists' />
-      </div>
-      <RankedList
-        active={true}
-        timeRange='short_term'
-        artists={artists.short.items}
-      />
-      <RankedList
-        active={false}
-        timeRange='medium_term'
-        artists={artists.medium.items}
-      />
-      <RankedList
-        active={false}
-        timeRange='long_term'
-        artists={artists.long.items}
-      />
-    </section>
     <section class='ranked-section'>
       <div class='mb-10'>
         <TimeFilters client:only='svelte' title='Top Tracks' />
       </div>
-      <RankedList
-        active={true}
-        timeRange='short_term'
-        tracks={tracks.short.items}
-      />
-      <RankedList
-        active={false}
-        timeRange='medium_term'
-        tracks={tracks.medium.items}
-      />
-      <RankedList
-        active={false}
-        timeRange='long_term'
-        tracks={tracks.long.items}
-      />
+      <RankedList active={true} timeRange='short_term' tracks={tracks.short.items} />
+      <RankedList active={false} timeRange='medium_term' tracks={tracks.medium.items} />
+      <RankedList active={false} timeRange='long_term' tracks={tracks.long.items} />
+    </section>
+    <section class='ranked-section'>
+      <div class='mb-10'>
+        <TimeFilters client:only='svelte' title='Top Artists' />
+      </div>
+      <RankedList active={true} timeRange='short_term' artists={artists.short.items} />
+      <RankedList active={false} timeRange='medium_term' artists={artists.medium.items} />
+      <RankedList active={false} timeRange='long_term' artists={artists.long.items} />
     </section>
     <section>
       <h2 class='text-xl font-bold mb-10'>My Playlists</h2>

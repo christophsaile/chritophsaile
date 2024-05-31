@@ -1,9 +1,5 @@
 ---
-import type {
-  SpotifyArtists,
-  SpotifyTracks,
-  TimeRange,
-} from '../../libs/spotify';
+import type { SpotifyArtists, SpotifyTracks, TimeRange } from '../../libs/spotify';
 import RankedItem from './ranked-item.astro';
 interface Props {
   tracks?: SpotifyTracks[];
@@ -17,37 +13,37 @@ const { tracks, artists, timeRange, active } = Astro.props;
 
 <ol
   class:list={[
-    'ranked-list grid gap-3 md:grid-cols-2 md:gap-6 list-decimal ',
+    'grid gap-4 md:grid-cols-2 md:grid-rows-5 md:grid-flow-col',
     `${timeRange}`,
     { hidden: !active },
   ]}
 >
   {
-    tracks &&
-      tracks.map((item) => (
-        <li>
-          <a>
-            <RankedItem
-              title={item.name}
-              description={item.artists.map((artist) => artist.name).join(', ')}
-              img={item.album.images}
-            />
-          </a>
-        </li>
-      ))
+    tracks?.map((item, index) => (
+      <li class='flex gap-1'>
+        <span class='min-w-8 text-lg' aria-hidden='true'>
+          {index + 1}.
+        </span>
+        <a>
+          <RankedItem
+            title={item.name}
+            description={item.artists.map((artist) => artist.name).join(', ')}
+            img={item.album.images}
+          />
+        </a>
+      </li>
+    ))
   }
   {
-    artists &&
-      artists.map((item) => (
-        <li>
-          <a>
-            <RankedItem
-              title={item.name}
-              description={item.genres.join(', ')}
-              img={item.images}
-            />
-          </a>
-        </li>
-      ))
+    artists?.map((item, index) => (
+      <li class='flex gap-1'>
+        <span class=' min-w-8 text-lg' aria-hidden='true'>
+          {index + 1}.
+        </span>
+        <a class='w-auto'>
+          <RankedItem title={item.name} description={item.genres.join(', ')} img={item.images} />
+        </a>
+      </li>
+    ))
   }
 </ol>
