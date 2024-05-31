@@ -24,7 +24,7 @@ const { tracks, artists, timeRange, active } = Astro.props;
 >
   {
     tracks?.map((item, index) => (
-      <li class='flex gap-1 p-3 lg:p-4 bg-gray-200 hover:bg-gray-300 hover:transition-colors rounded-md items-center'>
+      <li class='flex gap-1 p-3 lg:p-4 border border-black hover:bg-gray-100 hover:transition-colors rounded-sm items-center'>
         <span class='min-w-7' aria-hidden='true'>
           {index + 1}.
         </span>
@@ -39,7 +39,7 @@ const { tracks, artists, timeRange, active } = Astro.props;
   }
   {
     artists?.map((item, index) => (
-      <li class='flex gap-1 p-3 lg:p-4 bg-gray-200 hover:bg-gray-300 rounded-md items-center'>
+      <li class='flex gap-1 p-3 lg:p-4 border border-black hover:bg-gray-100 rhover:transition-colors rounded-sm items-center'>
         <span class=' min-w-7' aria-hidden='true'>
           {index + 1}.
         </span>
