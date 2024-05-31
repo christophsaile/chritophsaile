@@ -4,6 +4,7 @@ import Layout from '../layouts/layout.astro';
 import { getCollection, getEntry } from 'astro:content';
 
 const projects = await getCollection('projects');
+console.log(projects);
 const content = await getEntry('latest-projects', 'content');
 ---
 
@@ -13,8 +14,12 @@ const content = await getEntry('latest-projects', 'content');
       <h1 class='text-4xl font-bold mb-4'>{content.data.title}</h1>
       <p class='text-xl'>{content.data.description}</p>
     </div>
-    <ul class='grid grid-cols-1 gap-8'>
-      {projects.map((project: any) => <ProjectPreview {...project.data} />)}
+    <ul class='grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-16'>
+      {
+        projects.map((project: any) => (
+          <ProjectPreview slug={project.slug} {...project.data} />
+        ))
+      }
     </ul>
   </main>
 </Layout>

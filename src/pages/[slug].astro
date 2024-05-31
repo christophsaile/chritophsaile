@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/layout.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: {
+      slug: project.slug,
+    },
+    props: {
+      title: project.data.title,
+      description: project.data.description,
+      body: project.data.body,
+    },
+  }));
+}
+
+const { slug } = Astro.params;
+const { title, description, body } = Astro.props;
+---
+
+<Layout title={`${title} - Christoph Saile`}><main>{description}</main></Layout>

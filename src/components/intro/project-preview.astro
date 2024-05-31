@@ -1,15 +1,12 @@
 ---
-const { title, description } = Astro.props;
+const { title, description, slug } = Astro.props;
 ---
 
 <article class='flex flex-col gap-3'>
   <h3 class='font-bold text-xl'>{title}</h3>
   <p>{description}</p>
-  <!-- change this to project link / url  -->
-  <a
-    class='flex gap-1 underline items-center justify-end mt-auto'
-    href='/latest-projects'
-    >visit page <svg
+  <a class='flex gap-1 underline items-center justify-end mt-auto' href={slug}
+    >visit page <span class='sr-only'>visit page {slug}</span><svg
       aria-hidden='true'
       xmlns='http://www.w3.org/2000/svg'
       fill='none'
