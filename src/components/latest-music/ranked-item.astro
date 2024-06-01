@@ -12,13 +12,7 @@ const { title, description, img, href } = Astro.props;
 ---
 
 <a class='flex w-full pr-1 lg:pr-2 text-black' href={href}>
-  <Image
-    class='rounded-sm h-16 mr-3 lg:mr-4'
-    src={img[2].url}
-    alt=''
-    width={64}
-    height={64}
-  />
+  <Image class='rounded-sm h-16 mr-3 lg:mr-4' src={img[2].url} alt='' width={64} height={64} />
   <div class='flex flex-col'>
     <p class='font-bold'>{title}</p>
     <p class='text-sm break-words'>{description}</p>
@@ -32,9 +26,7 @@ const { title, description, img, href } = Astro.props;
     stroke='currentColor'
     class='size-4 ml-auto self-end text-gray-600 shrink-0'
   >
-    <path
-      stroke-linecap='round'
-      stroke-linejoin='round'
-      d='m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25'></path>
+    <path stroke-linecap='round' stroke-linejoin='round' d='m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25'
+    ></path>
   </svg>
 </a>

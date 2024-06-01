@@ -9,4 +9,19 @@ const introCollection = defineCollection({
   }),
 });
 
-export const collections = { intro: introCollection };
+const projectsCollection = defineCollection({
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      url: z.string().optional(),
+      cover: image(),
+      description: z.string(),
+      order: z.number(),
+      year: z.number(),
+    }),
+});
+
+export const collections = {
+  intro: introCollection,
+  projects: projectsCollection,
+};
