@@ -21,21 +21,19 @@ const { Content } = await project.render();
 
 <Layout title={`${project.data.title} - Christoph Saile`}>
   <main>
-    <article class='flex flex-col gap-10'>
+    <article class='flex flex-col gap-20'>
       <Image src={project.data.cover} alt='' />
       <div class='flex flex-col gap-y-20'>
-        <section
-          class='grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-x-0 lg:gap-y-20'
-        >
-          <div class='flex flex-col'>
+        <section class='grid gap-6 md:gap-10'>
+          <div class='flex flex-col gap-2' '>
             <h1>
               <a href={project.data.url}>{project.data.title}</a>
             </h1>
-            <span>Date: {project.data.year}</span>
+            <span class='text-gray-600'>Created {project.data.year}</span>
           </div>
-          <p class='hyphens-auto'>{project.data.description}</p>
+          <p class='hyphens-auto leading-relaxed'>{project.data.description}</p>
         </section>
-        <div class='flex flex-col gap-y-20'>
+        <div class='flex flex-col gap-20'>
           <Content />
         </div>
       </div>
@@ -45,10 +43,10 @@ const { Content } = await project.render();
 
 <style is:global>
   .section {
-    @apply grid md:grid-cols-[1fr_2fr];
+    @apply grid md:grid-cols-[1fr_3fr];
   }
   .section-text {
-    @apply flex flex-col gap-2 hyphens-auto;
+    @apply flex flex-col gap-2 hyphens-auto leading-relaxed;
   }
   h1 {
     @apply text-4xl font-bold;
