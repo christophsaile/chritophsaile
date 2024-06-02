@@ -15,6 +15,7 @@ const projectsCollection = defineCollection({
       title: z.string(),
       url: z.string().optional(),
       cover: image(),
+      coverMobile: image().optional(),
       description: z.string(),
       order: z.number(),
       year: z.number(),

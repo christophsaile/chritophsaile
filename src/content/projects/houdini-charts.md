@@ -1,7 +1,8 @@
 ---
 title: Houdini Charts
 url: https://github.com/christophsaile/houdini-charts
-cover: './../../assets/houdini-charts/radar-chart.png'
+cover: './../../assets/houdini-charts/cover.png'
+coverMobile: './../../assets/houdini-charts/cover.png'
 description: In 2021, I wrote my Bachelor thesis on 'Prototypical Development of Interactive and High-Performance Web Components for Data Visualization with CSS Houdini'. As part of this project, I developed a prototype charting library called 'Houdini Charts'. The library featured two chart types, a line chart and a radar chart. Given the prominence of COVID-19 at that time, I used coronavirus case data from the Robert Koch Institute as the basis for my charts.
 order: 0
 year: 2021
@@ -9,7 +10,7 @@ year: 2021
 
 <div class="section">
 
-## Absctract
+## Abstract
 
 <div class="section-text">
 
@@ -35,9 +36,9 @@ Further improvements and extensions for 'Houdini Charts' include enhancing brows
 </div>
 </div>
 
-<div class="section-image">
+<div class="section-full">
 
 ![Linechart Houdini Charts](../../assets/houdini-charts/line-chart.png)
 ![Radarchart Houdini Charts](../../assets/houdini-charts/radar-chart.png)
 
-</div
+</div>
