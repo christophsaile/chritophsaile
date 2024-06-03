@@ -11,9 +11,9 @@ interface Props {
 const { title, description, img, href } = Astro.props;
 ---
 
-<a class='flex w-full pr-1 lg:pr-2 text-black' href={href}>
+<a class='flex w-full pr-1 text-black lg:pr-2' href={href}>
   <Image
-    class='rounded-sm h-16 mr-3 lg:mr-4'
+    class='mr-3 h-16 rounded-sm lg:mr-4'
     src={img[2].url}
     alt=''
     width={64}
@@ -21,7 +21,7 @@ const { title, description, img, href } = Astro.props;
   />
   <div class='flex flex-col'>
     <p class='font-bold'>{title}</p>
-    <p class='text-sm break-words'>{description}</p>
+    <p class='break-words text-sm'>{description}</p>
   </div>
   <svg
     aria-hidden='true'
@@ -30,7 +30,7 @@ const { title, description, img, href } = Astro.props;
     viewBox='0 0 24 24'
     stroke-width='1.5'
     stroke='currentColor'
-    class='size-4 ml-auto self-end text-gray-600 shrink-0'
+    class='ml-auto size-4 shrink-0 self-end text-gray-600'
   >
     <path
       stroke-linecap='round'

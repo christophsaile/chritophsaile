@@ -2,9 +2,9 @@
 const { title, url } = Astro.props;
 ---
 
-<div class='flex justify-between items-baseline mb-10 md:mb-16'>
+<div class='mb-10 flex items-baseline justify-between md:mb-16'>
   <h2 class='text-2xl font-bold'>{title}</h2>
-  <a class='flex underline items-center gap-1' href={url}
+  <a class='flex items-center gap-1 underline' href={url}
     >view all <svg
       aria-hidden='true'
       xmlns='http://www.w3.org/2000/svg'

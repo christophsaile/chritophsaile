@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 main {
-  @apply px-7 py-32 md:px-20 lg:w-[1024px] lg:mx-auto;
+  @apply px-7 py-32 md:px-20 lg:mx-auto lg:w-[1024px];
 }
 
 @layer components {
   .headline {
-    @apply text-3xl font-bold sm:text-4xl text-black leading-tight;
+    @apply text-3xl font-bold leading-tight text-black sm:text-4xl;
   }
 
   .btn {
-    @apply px-3 py-1 rounded-md text-black bg-white  hover:bg-gray-200 hover:transition-colors;
+    @apply rounded-md bg-white px-3 py-1 text-black hover:bg-gray-200 hover:transition-colors;
   }
 
   .btn-active {

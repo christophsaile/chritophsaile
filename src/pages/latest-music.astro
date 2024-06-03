@@ -71,7 +71,7 @@ const playlists = userPlaylists;
 <Layout title='Spotify - Christoph Saile'>
   <main class='flex flex-col gap-20 md:gap-24'>
     <div class='md:w-3/5'>
-      <h1 class='text-4xl font-bold mb-4'>{content.data.title}</h1>
+      <h1 class='mb-4 text-4xl font-bold'>{content.data.title}</h1>
       <p class='text-xl'>
         {content.data.description}
       </p>
@@ -121,7 +121,7 @@ const playlists = userPlaylists;
       </div>
     </section>
     <section>
-      <h2 class='text-xl font-bold mb-10'>My Playlists</h2>
+      <h2 class='mb-10 text-xl font-bold'>My Playlists</h2>
       <Playlists playlists={playlists.items} />
     </section>
   </main>

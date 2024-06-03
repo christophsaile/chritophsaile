@@ -17,14 +17,14 @@ const { tracks, artists, timeRange, active } = Astro.props;
 
 <ol
   class:list={[
-    'ranked-list grid gap-4 md:grid-cols-2 md:grid-rows-5 md:grid-flow-col',
+    'ranked-list grid gap-4 md:grid-flow-col md:grid-cols-2 md:grid-rows-5',
     `${timeRange}`,
     { hidden: !active },
   ]}
 >
   {
     tracks?.map((item, index) => (
-      <li class='flex gap-1 p-3 lg:p-4 border border-black hover:bg-gray-100 hover:transition-colors rounded-sm items-center'>
+      <li class='flex items-center gap-1 rounded-sm border border-black p-3 hover:bg-gray-100 hover:transition-colors lg:p-4'>
         <span class='min-w-7' aria-hidden='true'>
           {index + 1}.
         </span>
@@ -39,8 +39,8 @@ const { tracks, artists, timeRange, active } = Astro.props;
   }
   {
     artists?.map((item, index) => (
-      <li class='flex gap-1 p-3 lg:p-4 border border-black hover:bg-gray-100 rhover:transition-colors rounded-sm items-center'>
-        <span class=' min-w-7' aria-hidden='true'>
+      <li class='rhover:transition-colors flex items-center gap-1 rounded-sm border border-black p-3 hover:bg-gray-100 lg:p-4'>
+        <span class='min-w-7' aria-hidden='true'>
           {index + 1}.
         </span>
         <RankedItem
