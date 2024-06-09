@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+
+import kdOne from '../../assets/kaesediebe/kaesediebe-1.webp';
+import kdTwo from '../../assets/kaesediebe/kaesediebe-2.webp';
+import kdThree from '../../assets/kaesediebe/kaesediebe-3.webp';
+import kdFour from '../../assets/kaesediebe/kaesediebe-4.webp';
+import kdFive from '../../assets/kaesediebe/kaesediebe-5.webp';
+import kdSeven from '../../assets/kaesediebe/kaesediebe-7.webp';
+---
+
+<div class='flex flex-col gap-20'>
+  <div>
+    <h2 class='mb-4 text-2xl font-bold md:mb-8'>User Interface</h2>
+    <div class='grid grid-cols-2 lg:grid-cols-3'>
+      <Image src={kdOne} alt='User Interface Home Screen' />
+      <Image src={kdTwo} alt='User Interface Recipe Screen' />
+      <Image src={kdThree} alt='User Interface Menu Screen' />
+      <Image src={kdFour} alt='User Interface Search Screen' />
+      <Image src={kdFive} alt='User Interface Category Screen' />
+      <Image src={kdSeven} alt='User Interface Empty Favorites Screen' />
+    </div>
+  </div>
+  <div class='grid md:grid-cols-[1fr_3fr]'>
+    <h2 class='mb-4 text-2xl font-bold md:mb-0'>Technology</h2>
+    <p>
+      Building Käsediebe, my food blog, required a combination of technologies and infrastructure to
+      ensure a seamless and efficient user experience. Here's an overview of the tools and services
+      that power the application: To expedite the development process, I utilized <a
+        href='https://tailwindcss.com/'>Tailwind CSS</a
+      > and <a href='https://daisyui.com/'>daisyUI</a>. These tools provided prebuilt components
+      that allowed me to build my app efficiently without spending too much time on design details.
+      As a static site generator,
+      <a href='https://astro.build/'>Astro</a> plays a crucial role in my workflow. It enables me to
+      quickly generate all the pages for my blog during build time, ensuring fast load times and a smooth
+      user experience. For the interactive client-side components, I employed <a
+        href='https://www.solidjs.com/'>SolidJS</a
+      >, which allows me to create dynamic elements that enhance the overall functionality of the
+      site. For content management, I chose <a href='https://www.contentful.com/'>Contentful</a>, a
+      headless CMS that as a flawless integration with Astro. This combination makes maintaining my
+      blog effortless and straightforward. I host my application on <a
+        href='https://www.netlify.com/'>Netlify</a
+      >, which provides reliable and efficient hosting services. To implement instant search
+      functionality, I integrated <a href='https://www.algolia.com/'>Algolia</a>. It is directly
+      connected to my Contentful space, ensuring that whenever I publish a new recipe, Contentful
+      triggers a webhook. This webhook updates the Algolia search index and initiates a build and
+      deployment of my app on Netlify, keeping everything up-to-date seamlessly.
+    </p>
+  </div>
+</div>
