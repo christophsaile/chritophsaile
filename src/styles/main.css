@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 main {
-  @apply px-7 py-32 md:px-20 lg:mx-auto lg:w-[1024px];
+  @apply px-7 py-32 md:px-20 md:py-40 lg:mx-auto lg:w-[1024px];
 }
 
 @layer components {
