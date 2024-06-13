@@ -2,7 +2,9 @@
 const { title, description, slug } = Astro.props;
 ---
 
-<article class='flex flex-col gap-3'>
+<article
+  class='flex flex-col gap-3 border border-black p-4 hover:bg-gray-100 hover:transition-colors'
+>
   <h3 class='text-xl font-bold'>{title}</h3>
   <p>{description}</p>
   <a class='link mt-auto flex items-center justify-end gap-1' href=`latest-projects/${slug}`

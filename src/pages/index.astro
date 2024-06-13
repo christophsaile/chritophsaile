@@ -17,7 +17,7 @@ const projects = await getEntries(intro.data.projects);
     </div>
     <section class='flex flex-col'>
       <HeadlineViewAll title='Latest Projects' url='/latest-projects' />
-      <div class='grid gap-6 md:gap-10 lg:grid-cols-2 lg:gap-16'>
+      <div class='grid gap-6 md:gap-10 lg:grid-cols-2'>
         {projects.map((project: any) => <ProjectPreview slug={project.slug} {...project.data} />)}
       </div>
     </section>
