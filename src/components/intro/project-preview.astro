@@ -5,7 +5,7 @@ const { title, description, slug } = Astro.props;
 <article class='flex flex-col gap-3'>
   <h3 class='text-xl font-bold'>{title}</h3>
   <p>{description}</p>
-  <a class='mt-auto flex items-center justify-end gap-1 underline' href={slug}
+  <a class='mt-auto flex items-center justify-end gap-1 underline' href=`latest-projects/${slug}`
     >visit page <span class='sr-only'>visit page {slug}</span><svg
       aria-hidden='true'
       xmlns='http://www.w3.org/2000/svg'
