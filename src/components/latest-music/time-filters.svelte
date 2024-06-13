@@ -27,12 +27,12 @@
   });
 </script>
 
-<div class="flex flex-col gap-2" bind:this={elem}>
+<div class="flex flex-col gap-3" bind:this={elem}>
   <h2 class="text-xl font-bold">{title}</h2>
   <ul class="flex gap-3">
     <li>
       <button
-        class="btn btn-active rounded-md"
+        class="btn btn-active"
         on:click={(e) => handleClick('short_term', e)}>recent</button
       >
     </li>

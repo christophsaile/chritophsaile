@@ -11,11 +11,15 @@ main {
     @apply text-3xl font-bold leading-tight text-black sm:text-4xl;
   }
 
+  .link {
+    @apply underline;
+  }
+
   .btn {
-    @apply rounded-md bg-white px-3 py-1 text-black hover:bg-gray-200 hover:transition-colors;
+    @apply rounded-sm border border-black bg-white px-3 py-1 text-black hover:bg-gray-200 hover:transition-colors;
   }
 
   .btn-active {
-    @apply bg-brand-yellow-light hover:bg-brand-yellow-light;
+    @apply border border-black bg-brand-yellow-light hover:bg-brand-yellow;
   }
 }
