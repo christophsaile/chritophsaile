@@ -23,7 +23,7 @@
   </div>
 {/await}
 
-<style>
+<style lang="css">
   .tile:last-child,
   .tile:nth-last-child(2) {
     display: none;
