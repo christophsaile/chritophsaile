@@ -1,11 +1,15 @@
 <script lang="ts">
   import Tile from '../latest-music/tile.svelte';
 
-  let tracksPromise = fetch('/get-tracks?timeRange=short_term').then((res) => res.json());
+  const tracksPromise = fetch('/get-tracks?timeRange=short_term').then((res) =>
+    res.json()
+  );
 </script>
 
 {#await tracksPromise then tracks}
-  <div class="grid grid-cols-2 gap-5 sm:flex sm:flex-wrap sm:justify-between sm:gap-8">
+  <div
+    class="grid grid-cols-2 gap-5 sm:flex sm:flex-wrap sm:justify-between sm:gap-8"
+  >
     {#each tracks.items as track (track.id)}
       <div class="tile">
         <Tile

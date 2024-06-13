@@ -3,7 +3,6 @@ import Layout from '../layouts/layout.astro';
 import HeadlineViewAll from '../components/intro/headline-viewl-all.astro';
 import ProjectPreview from '../components/intro/project-preview.astro';
 import { getEntry, getEntries } from 'astro:content';
-import PreviewLatestMusic from '../components/intro/preview-latest-music.svelte';
 
 const intro = await getEntry('intro', 'content');
 const projects = await getEntries(intro.data.projects);
@@ -18,12 +17,16 @@ const projects = await getEntries(intro.data.projects);
     <section class='flex flex-col'>
       <HeadlineViewAll title='Latest Projects' url='/latest-projects' />
       <div class='grid gap-6 md:gap-10 lg:grid-cols-2 lg:gap-16'>
-        {projects.map((project: any) => <ProjectPreview slug={project.slug} {...project.data} />)}
+        {
+          projects.map((project: any) => (
+            <ProjectPreview slug={project.slug} {...project.data} />
+          ))
+        }
       </div>
     </section>
     <section class='flex flex-col'>
       <HeadlineViewAll title='Latest Music' url='/latest-music' />
-      <PreviewLatestMusic client:idle />
+      <!-- <PreviewLatestMusic client:idle /> -->
     </section>
   </main>
 </Layout>

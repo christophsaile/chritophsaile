@@ -62,8 +62,9 @@
             on:click={() => toggleTheme(themes[theme].name, index)}
             class="w-6 h-6 rounded-full shadow-sm {themes[theme]
               .bg} hover:scale-110"
-            ><span class="sr-only">{themes[theme].name}</span></button
           >
+            <span class="sr-only">{themes[theme].name}</span>
+          </button>
         </li>
       {/each}
     </ul>
