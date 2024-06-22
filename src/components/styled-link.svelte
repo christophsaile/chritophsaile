@@ -3,7 +3,7 @@
 </script>
 
 <a
-  class="relative leading-none group ml-auto items-center gap-0.5 inline-flex"
+  class="p-1 relative leading-none group ml-auto items-center gap-0.5 inline-flex"
   {href}
 >
   <slot></slot>
@@ -35,9 +35,9 @@
   a::before {
     content: '';
     position: absolute;
-    bottom: -0.3em;
-    left: 0;
-    width: 100%;
+    bottom: calc(-0.2em + 4px);
+    left: 4px;
+    width: calc(100% - 8px);
     height: 2px;
     background-repeat: no-repeat;
     background-image: linear-gradient(
