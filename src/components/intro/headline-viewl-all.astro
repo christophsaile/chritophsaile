@@ -1,23 +1,12 @@
 ---
+import StyledLink from '../styled-link.svelte';
+
 const { title, url } = Astro.props;
 ---
 
 <div class='mb-10 flex items-baseline justify-between md:mb-16'>
   <h2 class='text-2xl font-bold'>{title}</h2>
-  <a class='link flex items-center gap-1' href={url}
-    >view all <svg
-      aria-hidden='true'
-      xmlns='http://www.w3.org/2000/svg'
-      fill='none'
-      viewBox='0 0 24 24'
-      stroke-width='2.5'
-      stroke='currentColor'
-      class='size-4'
-    >
-      <path
-        stroke-linecap='round'
-        stroke-linejoin='round'
-        d='m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25'></path>
-    </svg></a
+  <StyledLink href={url}
+    >view all<span class='sr-only'>view all {title}</span></StyledLink
   >
 </div>
