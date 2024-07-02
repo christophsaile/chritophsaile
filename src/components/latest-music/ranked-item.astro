@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { SpotifyImage } from '../../libs/spotify';
+import vinyl from '../../assets/vinyl.webp';
 interface Props {
   title: string;
   description: string;
@@ -12,13 +13,22 @@ const { title, description, img, href } = Astro.props;
 ---
 
 <a class='flex w-full pr-1 text-black lg:pr-2' href={href}>
-  <Image
-    class='mr-3 h-16 rounded-sm lg:mr-4'
-    src={img[2].url}
-    alt=''
-    width={64}
-    height={64}
-  />
+  <div class='aspect-1 relative z-0 mr-3 w-16 flex-shrink-0 lg:mr-4'>
+    <Image
+      class='group-hover:transform-vinyl relative right-0 h-16 rounded-sm transition-all'
+      src={img[2].url}
+      alt=''
+      width={64}
+      height={64}
+    />
+    <img
+      class='absolute left-0 top-0 -z-10 scale-[0.9] opacity-0 transition-all group-hover:left-[12%] group-hover:opacity-100'
+      src={vinyl.src}
+      alt=''
+      height={64}
+      width={64}
+    />
+  </div>
   <div class='flex flex-col'>
     <p class='font-bold'>{title}</p>
     <p class='break-words text-sm'>{description}</p>
