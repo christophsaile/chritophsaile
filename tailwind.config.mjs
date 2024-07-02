@@ -4,6 +4,8 @@ export default {
   theme: {
     extend: {
       colors: {
+        primary: 'rgb(var(--color-primary) / <alpha-value>)',
+        secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
         'brand-blue': '#003BDF',
         'brand-green': '#00B574',
         'brand-purple': '#6960E2',

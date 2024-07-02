@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary: 255 255 255;
+  --color-secondary: 123 456 789;
+}
+
 main {
   @apply px-7 py-32 md:px-20 md:py-40 lg:mx-auto lg:w-[1024px];
 }

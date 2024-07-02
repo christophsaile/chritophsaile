@@ -26,7 +26,7 @@
 
 <style>
   a {
-    color: rgba(0, 0, 0, 0.6);
+    @apply text-black/70;
   }
   a:hover {
     transition: 0.3s ease-out;
