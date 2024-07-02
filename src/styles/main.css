@@ -26,7 +26,10 @@ main {
 }
 
 @layer utilities {
-  .transform-vinyl {
+  .transform-vinyl-cover {
     transform: perspective(400px) rotateY(-25deg) translateX(-16%) scale(0.9);
+  }
+  .transform-vinyl {
+    transform: translateX(12%) scale(0.9);
   }
 }

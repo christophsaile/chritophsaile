@@ -1,6 +1,7 @@
 ---
 import Header from './header.astro';
 import ColorSwitch from '../components/color-switch.svelte';
+import Logo from '../components/logo.svelte';
 import '../styles/main.css';
 import { ViewTransitions } from 'astro:transitions';
 
@@ -24,6 +25,7 @@ const { title, header = true } = Astro.props;
     <ViewTransitions />
   </head>
   <body>
+    <Logo client:only='svelte' />
     <ColorSwitch client:only='svelte' />
     <slot />
     {header && <Header />}
