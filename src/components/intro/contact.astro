@@ -1,0 +1,47 @@
+---
+import StyledLink from '../styled-link.svelte';
+---
+
+<h2 class='mb-10 text-2xl font-bold md:mb-16'>Lets Connect</h2>
+<div class='grid md:grid-cols-[1fr_3fr]'>
+  <ul class='flex flex-col gap-6 md:pr-4'>
+    <li><StyledLink>github</StyledLink></li><li>
+      <StyledLink>mastadon</StyledLink>
+    </li><li><StyledLink>instagram</StyledLink></li><li>
+      <StyledLink>strava</StyledLink>
+    </li>
+  </ul>
+  <form class='md:border-l md:border-black md:pl-8'>
+    <div class='mb-10 flex flex-wrap gap-6'>
+      My name is <input
+        class='border-b border-black px-3 py-1'
+        placeholder='John Snow'
+        type='text'
+        name='name'
+      /> and I work for <input
+        class='border-b border-black px-3 py-1'
+        name='company'
+        type='text'
+        placeholder='La Garde de Nuit'
+      />.I would like us to talk about <input
+        class='border-b border-black px-3 py-1'
+        placeholder='Daenerys et ses dragons'
+        type='text'
+        name='topic'
+      />Please contact me at<input
+        class='border-b border-black px-3 py-1'
+        placeholder='jon-snow@la-garde-de-nuit.com'
+        type='email'
+        name='email'
+      />or at<input
+        class='border-b border-black px-3 py-1'
+        placeholder='+XX XXXX XXXX XXXX'
+        type='tel'
+        name='phone'
+      />
+    </div>
+    <button class='btn flex items-center gap-1' type='submit'
+      >send message
+    </button>
+  </form>
+</div>

@@ -4,6 +4,7 @@ import HeadlineViewAll from '../components/intro/headline-viewl-all.astro';
 import ProjectPreview from '../components/intro/project-preview.astro';
 import { getEntry, getEntries } from 'astro:content';
 import PreviewLatestMusic from '../components/intro/preview-latest-music.svelte';
+import Contact from '../components/intro/contact.astro';
 
 const intro = await getEntry('intro', 'content');
 const projects = await getEntries(intro.data.projects);
@@ -29,5 +30,8 @@ const projects = await getEntries(intro.data.projects);
       <HeadlineViewAll title='Latest Music' url='/latest-music' />
       <PreviewLatestMusic client:idle />
     </section>
+    <!-- <section>
+      <Contact />
+    </section> -->
   </main>
 </Layout>
