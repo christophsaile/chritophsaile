@@ -1,15 +1,11 @@
-<a
-  href="/"
-  class="absolute left-0 right-0 w-full pt-4 px-7 md:px-20 lg:w-[1024px] lg:mx-auto flex z-10"
->
+<a class="h-6 block" href="/">
   <span class="sr-only">Home</span>
   <svg
-    width="121"
-    height="26"
     viewBox="0 0 121 26"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
+    class="h-full"
   >
     <path
       d="M5.90575 22.5333V16.64H0V11.7867H5.90575V5.89333H11.1167V11.7867H17.0225V16.64H11.1167V22.5333H5.90575Z"

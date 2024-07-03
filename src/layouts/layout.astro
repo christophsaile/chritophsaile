@@ -25,8 +25,13 @@ const { title, header = true } = Astro.props;
     <ViewTransitions />
   </head>
   <body>
-    <Logo client:only='svelte' />
-    <ColorSwitch client:only='svelte' />
+    <div
+      class='absolute left-0 right-0 flex w-full justify-between px-7 pt-4 md:px-20 lg:mx-auto lg:w-[1024px]'
+    >
+      <Logo client:idle />
+      <ColorSwitch client:only='svelte' />
+    </div>
+
     <slot />
     {header && <Header />}
     <script is:inline>
