@@ -38,7 +38,7 @@
     bottom: calc(-0.2em + 4px);
     left: 4px;
     width: calc(100% - 8px);
-    height: 2px;
+    height: 1px;
     background-repeat: no-repeat;
     background-image: linear-gradient(
       to right,
