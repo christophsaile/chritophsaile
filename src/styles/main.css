@@ -7,21 +7,22 @@
   --color-secondary: 123 456 789;
 }
 
+*:focus,
+*:focus-visible {
+  @apply outline outline-2 outline-offset-1 outline-brand-blue;
+}
+
 main {
   @apply px-7 py-32 md:px-20 md:py-40 lg:mx-auto lg:w-[1024px];
 }
 
 @layer components {
-  .headline {
-    @apply text-3xl font-bold leading-tight text-black sm:text-4xl;
-  }
-
   .btn {
-    @apply rounded-sm border border-black bg-white px-3 py-1 text-black hover:bg-gray-200 hover:transition-colors;
+    @apply rounded-sm border border-black bg-white px-3 py-1 text-black hover:bg-black/10 hover:transition-colors;
   }
 
   .btn-active {
-    @apply border border-black bg-brand-yellow-light hover:bg-brand-yellow;
+    @apply border border-black bg-brand-yellow-light hover:bg-brand-yellow/10;
   }
 }
 
