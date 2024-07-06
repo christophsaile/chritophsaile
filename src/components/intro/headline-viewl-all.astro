@@ -7,6 +7,7 @@ const { title, url } = Astro.props;
 <div class='mb-10 flex items-baseline justify-between md:mb-16'>
   <h2 class='text-2xl font-bold'>{title}</h2>
   <StyledLink href={url}
-    >view all<span class='sr-only'>view all {title}</span></StyledLink
+    ><span aria-hidden='true'>view all</span><span class='sr-only'>view all {title}</span
+    ></StyledLink
   >
 </div>

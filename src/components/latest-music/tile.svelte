@@ -13,7 +13,7 @@
     <img
       class="rounded-sm relative transition-all duration-300 group-hover:transform-vinyl-cover"
       src={img[1]?.url || img[0].url}
-      alt={title}
+      alt=""
       height={160}
       width={160}
     />
