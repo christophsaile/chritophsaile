@@ -25,7 +25,7 @@
       width={160}
     />
   </div>
-  <div>
+  <div class="pt-1">
     <p class="font-bold">{title}</p>
     {#if description}
       <p>{description}</p>
