@@ -18,7 +18,7 @@ main {
 
 @layer components {
   .btn {
-    @apply rounded-sm border border-black bg-white px-3 py-1 text-black hover:bg-black/10 hover:transition-colors;
+    @apply rounded-sm border border-black px-3 py-1 text-black hover:bg-black/10 hover:transition-colors;
   }
 
   .btn-active {
