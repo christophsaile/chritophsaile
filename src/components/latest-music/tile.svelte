@@ -8,7 +8,7 @@
   export let externalUrl = '';
 </script>
 
-<a class="group max-w-40 relative" href={externalUrl}>
+<a class="group block max-w-40 relative" href={externalUrl}>
   <div class="group relative w-fit">
     <img
       class="rounded-sm relative transition-all duration-300 group-hover:transform-vinyl-cover"
